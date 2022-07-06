@@ -19,7 +19,7 @@ function VolumeSlider(props) {
                     value = {props.volume} 
                     aria-label="volume" /> 
             </Box>
-            <Typography variant='h4' className='white-text'>{props.volume}</Typography>
+            <Typography variant='h4'>{props.volume}</Typography>
         </div>
     )
 }

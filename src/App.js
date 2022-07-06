@@ -1,12 +1,30 @@
 import './App.css';
+import LogoLight from './assets/images/LogoLight.png'
+import LogoDark from './assets/images/LogoDark.png'
 import React, { useEffect, useState } from 'react';
 import VolumeSlider from './components/VolumeSlider';
 import VolumeChart from './components/VolumeChart';
-import {Typography} from '@mui/material'
 import Swal from 'sweetalert2';
+import { Switch } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {CssBaseline, useMediaQuery} from '@mui/material';
 
 function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+  const lightTheme = createTheme({
+    palette: 'light',
+  })
+
   const [volume, setVolume] = useState(0)
+  const [theme, setTheme] = useState(prefersDarkMode ? darkTheme: lightTheme)
+  const [logo, setLogo] = useState(prefersDarkMode ? LogoLight: LogoDark)
+  
     useEffect(() => {
         navigator.mediaDevices.getUserMedia({
             audio: true,
@@ -36,17 +54,38 @@ function App() {
               Swal.fire({
                 "title": "Please allow access to the microphone",
                 "icon": "error",
+                "confirmButtonText": "Reload Page"
+              }).then(() => {
+                window.location.reload()
               })
             })
     }, [])
+
+    const handleThemeChange = (event) => {
+      if(event.target.checked) {
+        setTheme(darkTheme)
+        setLogo(LogoLight)
+      } else {
+        setTheme(lightTheme)
+        setLogo(LogoDark)
+      }
+    };
+
   return (
-    <div className="App">
-      <div className = {"vertical-container"}>
-        <Typography variant = "h1" className = "white-text">Volume</Typography>
-        <VolumeSlider volume={volume}/>
-        <VolumeChart/>
-      </div>  
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <main className="App">
+        <div className = {"vertical-container"}>
+          <div className={'horizontal-container'}>
+            <img alt = "logo" src={logo} id={"logo"} width={50} height={50}/>
+            <Switch color='default' onChange={handleThemeChange}></Switch>
+          </div>
+        
+          <VolumeSlider volume={volume} id={"volume-slider"}/>
+          <VolumeChart/>
+        </div>  
+      </main>
+    </ThemeProvider>
   )
 }
 
