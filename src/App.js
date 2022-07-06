@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import VolumeSlider from './components/VolumeSlider';
+import VolumeChart from './components/VolumeChart';
 import {Typography} from '@mui/material'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <div className = {"vertical-container"}>
         <Typography variant = "h1" className = "white-text">Volume</Typography>
         <VolumeSlider volume={volume}/>
+        <VolumeChart/>
       </div>  
     </div>
   )
