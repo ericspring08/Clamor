@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import VolumeSlider from './components/VolumeSlider';
 import VolumeChart from './components/VolumeChart';
 import {Typography} from '@mui/material'
+import Swal from 'sweetalert2';
 
 function App() {
   const [volume, setVolume] = useState(0)
@@ -32,7 +33,10 @@ function App() {
             }
             })
             .catch(function(err) {
-                console.error(err);
+              Swal.fire({
+                "title": "Please allow access to the microphone",
+                "icon": "error",
+              })
             })
     }, [])
   return (
