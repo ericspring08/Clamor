@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Slider from '@mui/material/Slider'
 import Box from '@mui/material/Box'
 import { Typography } from '@mui/material';
