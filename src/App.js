@@ -78,7 +78,7 @@ function App() {
         <div className = {"vertical-container"}>
           <div className={'horizontal-container'}>
             <img alt = "logo" src={logo} id={"logo"} width={50} height={50}/>
-            <Switch color='default' onChange={handleThemeChange}></Switch>
+            <Switch color='default' defaultChecked={prefersDarkMode} onChange={handleThemeChange}></Switch>
           </div>
         
           <VolumeSlider volume={volume} id={"volume-slider"}/>
