@@ -21,3 +21,8 @@
 #title {
   align-self:center;
 }
+
+#charts {
+  display: flex;
+  flex-direction: row;
+}
