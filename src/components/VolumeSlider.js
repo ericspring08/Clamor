@@ -5,7 +5,7 @@ import Box from '@mui/material/Box'
 function VolumeSlider(props) {
     return (
         <div>
-            <Box sx={{ height: "90vh", marginTop: "2vh"}}>
+            <Box sx={{ height: "90vh"}}>
       
                 <Slider 
                     sx={{

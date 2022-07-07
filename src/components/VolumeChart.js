@@ -6,7 +6,7 @@ function VolumeChart(props) {
     return (
         <div style={{width: "100vw"}}>
             <ResponsiveContainer width={"100%"} height = {"100%"}>
-                <AreaChart width={900} height={900} data={props.volume}>
+                <AreaChart data={props.volume}>
                     <YAxis domain={[0, 100]}></YAxis>
                     <Area type="monotone" dataKey="volume" stroke="#8884d8" strokeWidth={2} />
                 </AreaChart>
