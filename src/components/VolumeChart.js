@@ -4,7 +4,7 @@ import {AreaChart, YAxis, ResponsiveContainer, Area} from 'recharts'
 function VolumeChart(props) {
     
     return (
-        <div style={{width: "100vw"}}>
+        <div style={{width: "100%"}}>
             <ResponsiveContainer width={"100%"} height = {"100%"}>
                 <AreaChart data={props.volume}>
                     <YAxis domain={[0, 100]}></YAxis>
