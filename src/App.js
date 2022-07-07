@@ -29,6 +29,8 @@ function App() {
   const [volumeArr, setVolumeArr] = useState(new Array(200).fill({
     volume: 0
   }))
+  const [red, setRed] = useState(0)
+  const [green, setGreen] = useState(255)
   
   // on load
   useEffect(() => {
@@ -57,7 +59,8 @@ function App() {
               setVolumeArr(data => [...data.slice(1), {
                 volume: vol
               }])
-              
+              setRed(Math.round((vol/100) * 255))
+              setGreen(Math.round(255 - (vol/100) * 255))
           }
           })
           .catch(function(err) {
@@ -91,7 +94,7 @@ function App() {
             <Switch color='default' defaultChecked={prefersDarkMode} onChange={handleThemeChange}></Switch>
           </div>
           <div id="charts">
-            <VolumeChart volume={volumeArr}></VolumeChart>
+            <VolumeChart volume={volumeArr} red = {red} green = {green}></VolumeChart>
             <VolumeSlider volume={volume} id={"volume-slider"}/>
           </div>
         </div>  
